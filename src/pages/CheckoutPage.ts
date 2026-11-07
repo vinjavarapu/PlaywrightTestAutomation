@@ -63,20 +63,20 @@ export class CheckoutPage extends BasePage {
   }> {
     return {
       title: await this.text(this.pageTitle),
-      errorMessage: await this.text(this.errorBanner),
+      errorMessage: await this.safeText(this.errorBanner),
       itemNames: await this.displayedItemNames(),
       itemPrices: await this.displayedItemPrices(),
       subtotal: await this.amount(this.subtotalLabel),
       tax: await this.amount(this.taxLabel),
       total: await this.amount(this.totalLabel),
-      completionMessage: await this.text(this.completionHeader),
+      completionMessage: await this.safeText(this.completionHeader),
       firstNameVisible: await this.isVisible(this.firstNameInput),
       finishButtonVisible: await this.isVisible(this.finishButton),
     };
   }
 
   async errorMessage(): Promise<string> {
-    return this.text(this.errorBanner);
+    return this.safeText(this.errorBanner);
   }
 
   async continue(): Promise<void> {
@@ -96,11 +96,16 @@ export class CheckoutPage extends BasePage {
   }
 
   private async amount(locator: Locator): Promise<number | null> {
-    const label = await this.text(locator);
+    const label = await this.safeText(locator);
     if (label.length === 0) return null;
     const amount = Number(label.replace(/[^\d.]/g, ''));
     if (!Number.isFinite(amount)) throw new Error(`Could not parse amount from: ${label}`);
     return amount;
+  }
+
+  private async safeText(locator: Locator): Promise<string> {
+    if ((await locator.count()) === 0) return '';
+    return (await locator.textContent())?.trim() ?? '';
   }
 }
 

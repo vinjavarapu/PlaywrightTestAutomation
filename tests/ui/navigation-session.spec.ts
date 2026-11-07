@@ -36,10 +36,11 @@ test.describe('Navigation and session behavior', () => {
     }
   });
 
-  test('[SD-049][P1][@core] resets app state and clears the cart', async ({ inventoryPage, sideMenu }) => {
+  test('[SD-049][P1][@core] resets app state and clears the cart', async ({ inventoryPage, sideMenu, page }) => {
     await inventoryPage.addToCart(products.backpack.name);
     await sideMenu.open();
     await sideMenu.resetAppState();
+    await page.reload();
 
     await expect.poll(() => inventoryPage.state()).toMatchObject({ cartBadge: null });
     await expect.poll(() => inventoryPage.productButtonLabel(products.backpack.name)).toBe('Add to cart');

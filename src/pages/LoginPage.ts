@@ -82,7 +82,10 @@ export class LoginPage extends BasePage {
     await this.usernameInput.focus();
     return this.usernameInput.evaluate((element) => {
       const style = getComputedStyle(element);
-      return (style.outlineStyle !== 'none' && style.outlineWidth !== '0px') || style.boxShadow !== 'none';
+      const focusVisible = element.matches(':focus-visible');
+      const outlineVisible = style.outlineStyle !== 'none' && style.outlineWidth !== '0px';
+      const shadowVisible = style.boxShadow !== 'none' && style.boxShadow !== '';
+      return element === document.activeElement && (focusVisible || outlineVisible || shadowVisible);
     });
   }
 

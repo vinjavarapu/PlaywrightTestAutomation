@@ -44,7 +44,7 @@ export class InventoryPage extends BasePage {
     this.detailName = this.byTestId('inventory-item-name');
     this.detailDescription = this.byTestId('inventory-item-desc');
     this.detailPrice = this.byTestId('inventory-item-price');
-    this.detailImage = page.getByRole('img');
+    this.detailImage = page.locator('img.inventory_details_img');
   }
 
   async state(): Promise<InventoryState> {
@@ -83,6 +83,7 @@ export class InventoryPage extends BasePage {
 
   async openProduct(name: string): Promise<void> {
     const detailLink = this.page.locator('[data-test$="-title-link"]').filter({ hasText: name }).first();
+    await detailLink.waitFor({ state: 'visible' });
     await this.click(detailLink);
   }
 

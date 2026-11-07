@@ -24,10 +24,12 @@ export abstract class BasePage {
   }
 
   protected async text(locator: Locator): Promise<string> {
+    if ((await locator.count()) === 0) return '';
     return (await locator.textContent())?.trim() ?? '';
   }
 
   protected async texts(locator: Locator): Promise<string[]> {
+    if ((await locator.count()) === 0) return [];
     return (await locator.allTextContents()).map((value) => value.trim());
   }
 
@@ -36,10 +38,12 @@ export abstract class BasePage {
   }
 
   protected async isVisible(locator: Locator): Promise<boolean> {
+    if ((await locator.count()) === 0) return false;
     return locator.isVisible();
   }
 
   protected async attribute(locator: Locator, name: string): Promise<string | null> {
+    if ((await locator.count()) === 0) return null;
     return locator.getAttribute(name);
   }
 
