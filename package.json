@@ -1,18 +1,23 @@
 {
-    "name":  "playwright-test-automation",
-    "version":  "1.0.0",
-    "private":  true,
-    "description":  "Playwright TypeScript end-to-end test automation",
-    "scripts":  {
-                    "test":  "playwright test",
-                    "test:headed":  "playwright test --headed",
-                    "test:debug":  "playwright test --debug",
-                    "report":  "playwright show-report",
-                    "codegen":  "playwright codegen"
-                },
-    "devDependencies":  {
-                            "@playwright/test":  "^1.56.1",
-                            "@types/node":  "^24.10.0",
-                            "typescript":  "^5.9.3"
-                        }
+  "name": "playwright-test-automation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright TypeScript end-to-end test automation",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:core": "playwright test --grep @core",
+    "test:regression": "playwright test --grep @regression",
+    "test:cross-browser": "playwright test --config=playwright.cross-browser.config.ts",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit",
+    "codegen": "playwright codegen"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  }
 }

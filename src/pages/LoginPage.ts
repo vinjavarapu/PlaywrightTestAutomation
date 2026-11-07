@@ -10,10 +10,10 @@ export class LoginPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    this.usernameInput = page.locator('[data-test="username"]');
-    this.passwordInput = page.locator('[data-test="password"]');
-    this.loginButton = page.locator('[data-test="login-button"]');
-    this.errorMessage = page.locator('[data-test="error"]');
+    this.usernameInput = page.getByTestId('username');
+    this.passwordInput = page.getByTestId('password');
+    this.loginButton = page.getByTestId('login-button');
+    this.errorMessage = page.getByTestId('error');
   }
 
   async open(): Promise<void> {
@@ -27,7 +27,4 @@ export class LoginPage extends BasePage {
     await this.loginButton.click();
   }
 
-  async loginAsStandardUser(): Promise<void> {
-    await this.login('standard_user', 'secret_sauce');
-  }
 }
