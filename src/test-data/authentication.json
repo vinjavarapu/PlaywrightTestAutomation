@@ -1,0 +1,9 @@
+{
+  "invalidLoginScenarios": [
+    { "id": "SD-003", "name": "rejects an unknown username", "username": "unknown_user", "password": "secret_sauce", "message": "do not match any user" },
+    { "id": "SD-004", "name": "rejects an incorrect password", "username": "standard_user", "password": "wrong_password", "message": "do not match any user" },
+    { "id": "SD-005", "name": "requires a username when both fields are blank", "username": "", "password": "", "message": "Username is required" },
+    { "id": "SD-006", "name": "requires a password", "username": "standard_user", "password": "", "message": "Password is required" },
+    { "id": "SD-007", "name": "requires a username when only a password is supplied", "username": "", "password": "secret_sauce", "message": "Username is required" }
+  ]
+}

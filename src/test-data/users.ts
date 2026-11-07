@@ -1,18 +1,17 @@
 import { environment } from '../config/environment';
+import userFixture from './users.json';
 
 export interface TestUser {
   readonly username: string;
   readonly password: string;
 }
 
-const demoPassword = environment.standardPassword;
-
 export const users = {
   standard: {
     username: environment.standardUsername,
-    password: demoPassword,
+    password: environment.standardPassword,
   },
-  lockedOut: { username: 'locked_out_user', password: demoPassword },
-  problem: { username: 'problem_user', password: demoPassword },
-  performanceGlitch: { username: 'performance_glitch_user', password: demoPassword },
+  lockedOut: { ...userFixture.lockedOut, password: environment.standardPassword },
+  problem: { ...userFixture.problem, password: environment.standardPassword },
+  performanceGlitch: { ...userFixture.performanceGlitch, password: environment.standardPassword },
 } as const satisfies Record<string, TestUser>;

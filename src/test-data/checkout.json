@@ -1,0 +1,10 @@
+{
+  "specialCharacterCustomer": { "firstName": "O'Neil", "lastName": "Anne-Marie", "postalCode": "A1B 2C3" },
+  "longInput": { "character": "A", "length": 200 },
+  "requiredFieldScenarios": [
+    { "id": "SD-033", "title": "requires first name when all fields are blank", "values": ["", "", ""], "message": "First Name is required" },
+    { "id": "SD-034", "title": "requires first name", "values": ["", "Lovelace", "94043"], "message": "First Name is required" },
+    { "id": "SD-035", "title": "requires last name", "values": ["Ada", "", "94043"], "message": "Last Name is required" },
+    { "id": "SD-036", "title": "requires postal code", "values": ["Ada", "Lovelace", ""], "message": "Postal Code is required" }
+  ]
+}

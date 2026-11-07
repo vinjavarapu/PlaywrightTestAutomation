@@ -1,6 +1,6 @@
 # Playwright Test Automation
 
-Enterprise-style UI automation for the SauceDemo sample application, implemented with Playwright Test and TypeScript.
+Production-oriented UI automation for SauceDemo, implemented with Playwright Test and TypeScript. The suite uses Page Objects with private locators, typed fixtures, JSON test data, validated environment configuration, structured logs, and isolated browser contexts.
 
 ## Requirements and setup
 
@@ -25,11 +25,14 @@ The smoke and priority suites can be filtered with their tags. Each test is isol
 Set optional overrides in PowerShell before running tests:
 
 ```powershell
+$env:TEST_ENV = 'demo'
 $env:BASE_URL = 'https://www.saucedemo.com'
-$env:SAUCEDEMO_USERNAME = 'standard_user'
-$env:SAUCEDEMO_PASSWORD = 'secret_sauce'
+$env:TEST_USERNAME = 'standard_user'
+$env:TEST_PASSWORD = 'secret_sauce'
 $env:TEST_TIMEOUT_MS = '45000'
 ```
+
+For QA, Stage, or Prod, set TEST_ENV to qa, stage, or prod and configure the corresponding QA_BASE_URL, STAGE_BASE_URL, or PROD_BASE_URL. TEST_USERNAME and TEST_PASSWORD are required outside the demo environment. BASE_URL can override the environment-specific URL.
 
 To run with a visible browser or inspect the HTML report:
 
@@ -44,19 +47,26 @@ Cross-browser coverage is available for Chromium, Firefox, and WebKit. Install t
 
 ## Configuration
 
-The default base URL is https://www.saucedemo.com. The framework reads BASE_URL, SAUCEDEMO_USERNAME, SAUCEDEMO_PASSWORD, and TEST_TIMEOUT_MS from the process environment. The values in .env.example are a reference; Playwright does not load .env files. Configure CI overrides as GitHub Actions variables/secrets. Standard SauceDemo demo credentials are used when credentials are omitted.
+The default environment is demo at https://www.saucedemo.com. Configuration validates TEST_ENV, the HTTP(S) base URL, paired credentials, and TEST_TIMEOUT_MS. The values in .env.example are a reference; Playwright does not load .env files. Configure CI overrides as GitHub Actions variables/secrets. Standard SauceDemo credentials are loaded from the JSON user fixture only for demo runs.
 
 ## Framework structure
 
-- src/config: validated runtime configuration
-- src/components: reusable navigation components
-- src/fixtures: typed Playwright fixtures for page objects and test data
-- src/pages: page objects for login, inventory, cart, and checkout
-- src/test-data: demo users and product catalogue
-- tests/ui: independent cases grouped by functional area
-- docs/test-coverage.md: traceability for all 58 PDF case IDs
+```text
+src/
+  components/SideMenu.ts
+  config/environment.ts
+  fixtures/test.ts
+  pages/             BasePage, LoginPage, InventoryPage, CartPage, CheckoutPage
+  test-data/         JSON fixtures and typed loaders for users, products, flows,
+                     sorting, authentication, and checkout
+  utils/             logger.ts, dataFactory.ts
+tests/ui/            Authentication, inventory, cart, checkout, navigation, quality
+docs/test-coverage.md
+playwright.config.ts
+playwright.cross-browser.config.ts
+```
 
-The page objects use SauceDemo data-test attributes and user-facing roles. Playwright captures a trace, screenshot, and video on failures, plus HTML and JUnit reports.
+Page objects expose business actions and read-only state methods; selectors remain private and assertions stay in specs. Playwright auto-waiting and polling assertions are used without fixed sleeps. Each test receives a fresh browser context. Failure traces, screenshots, and videos are retained, and HTML/JUnit reports are generated.
 
 ## GitHub Actions
 

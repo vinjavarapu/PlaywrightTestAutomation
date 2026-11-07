@@ -1,0 +1,8 @@
+{
+  "cartMultipleProducts": ["backpack", "bikeLight", "onesie"],
+  "checkoutLineItems": ["backpack", "bikeLight"],
+  "checkoutSubtotalItems": ["backpack", "bikeLight", "onesie"],
+  "checkoutTaxItems": ["backpack", "bikeLight"],
+  "checkoutMultiOrderItems": ["backpack", "bikeLight", "onesie"],
+  "cartNavigationProduct": "bikeLight"
+}

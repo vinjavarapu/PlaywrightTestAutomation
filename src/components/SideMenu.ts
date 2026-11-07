@@ -1,12 +1,12 @@
 import { type Locator, type Page } from '@playwright/test';
 
 export class SideMenu {
-  readonly openButton: Locator;
-  readonly closeButton: Locator;
-  readonly allItemsLink: Locator;
-  readonly aboutLink: Locator;
-  readonly resetLink: Locator;
-  readonly logoutLink: Locator;
+  private readonly openButton: Locator;
+  private readonly closeButton: Locator;
+  private readonly allItemsLink: Locator;
+  private readonly aboutLink: Locator;
+  private readonly resetLink: Locator;
+  private readonly logoutLink: Locator;
 
   constructor(private readonly page: Page) {
     this.openButton = page.getByRole('button', { name: 'Open Menu' });
@@ -25,6 +25,29 @@ export class SideMenu {
   async close(): Promise<void> {
     await this.closeButton.click();
     await this.allItemsLink.waitFor({ state: 'hidden' });
+  }
+
+  async state(): Promise<{ allItemsVisible: boolean }> {
+    return { allItemsVisible: await this.allItemsLink.isVisible() };
+  }
+
+  async aboutDestination(): Promise<{ href: string | null; opensNewTab: boolean }> {
+    return {
+      href: await this.aboutLink.getAttribute('href'),
+      opensNewTab: (await this.aboutLink.getAttribute('target')) === '_blank',
+    };
+  }
+
+  async followAboutLink(): Promise<void> {
+    await this.aboutLink.click();
+  }
+
+  async selectAllItems(): Promise<void> {
+    await this.allItemsLink.click();
+  }
+
+  async resetAppState(): Promise<void> {
+    await this.resetLink.click();
   }
 
   async logout(): Promise<void> {

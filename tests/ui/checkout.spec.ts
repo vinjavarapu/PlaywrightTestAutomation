@@ -1,5 +1,8 @@
 import { test, expect } from '../../src/fixtures/test';
 import { products } from '../../src/test-data/products';
+import { checkoutData } from '../../src/test-data/checkout';
+import { flows } from '../../src/test-data/flows';
+import { createCustomerData } from '../../src/utils/dataFactory';
 import { InventoryPage } from '../../src/pages/InventoryPage';
 import { CartPage } from '../../src/pages/CartPage';
 import { CheckoutPage } from '../../src/pages/CheckoutPage';
@@ -13,129 +16,127 @@ test.describe('Checkout and order completion', () => {
   test('[SD-031][P0][@smoke] starts checkout from a cart with a product', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
 
-    await expect(checkoutPage.pageTitle).toHaveText('Checkout: Your Information');
-    await expect(checkoutPage.firstNameInput).toBeVisible();
+    await expect.poll(() => checkoutPage.state()).toMatchObject({ title: 'Checkout: Your Information', firstNameVisible: true });
   });
 
   test('[SD-032][P0][@smoke] continues with valid customer details', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
-    await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-    await checkoutPage.continueButton.click();
+    await enterValidCustomer(checkoutPage);
+    await checkoutPage.continue();
 
-    await expect(checkoutPage.pageTitle).toHaveText('Checkout: Overview');
-    await expect(checkoutPage.finishButton).toBeVisible();
+    await expect.poll(() => checkoutPage.state()).toMatchObject({ title: 'Checkout: Overview', finishButtonVisible: true });
   });
 
-  const requiredFieldScenarios = [
-    { id: 'SD-033', title: 'requires first name when all fields are blank', values: ['', '', ''], message: /First Name is required/ },
-    { id: 'SD-034', title: 'requires first name', values: ['', 'Lovelace', '94043'], message: /First Name is required/ },
-    { id: 'SD-035', title: 'requires last name', values: ['Ada', '', '94043'], message: /Last Name is required/ },
-    { id: 'SD-036', title: 'requires postal code', values: ['Ada', 'Lovelace', ''], message: /Postal Code is required/ },
-  ] as const;
-
-  for (const scenario of requiredFieldScenarios) {
+  for (const scenario of checkoutData.requiredFieldScenarios) {
     test(`[${scenario.id}][P1][@core] ${scenario.title}`, async ({ inventoryPage, cartPage, checkoutPage }) => {
       await openCheckout(inventoryPage, cartPage, [products.backpack]);
       const [firstName, lastName, postalCode] = scenario.values;
       await checkoutPage.enterCustomer(firstName, lastName, postalCode);
-      await checkoutPage.continueButton.click();
+      await checkoutPage.continue();
 
-      await expect(checkoutPage.errorMessage).toContainText(scenario.message);
-      await expect(checkoutPage.pageTitle).toHaveText('Checkout: Your Information');
+      await expect.poll(() => checkoutPage.errorMessage()).toContain(scenario.message);
+      await expect.poll(() => checkoutPage.state()).toMatchObject({ title: 'Checkout: Your Information' });
     });
   }
 
   test('[SD-037][P2][@regression] handles punctuation in customer details', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
-    await checkoutPage.enterCustomer("O'Neil", 'Anne-Marie', 'A1B 2C3');
-    await checkoutPage.continueButton.click();
+    await checkoutPage.enterCustomer(
+      checkoutData.specialCharacterCustomer.firstName,
+      checkoutData.specialCharacterCustomer.lastName,
+      checkoutData.specialCharacterCustomer.postalCode,
+    );
+    await checkoutPage.continue();
 
-    await expect(checkoutPage.pageTitle).toHaveText('Checkout: Overview');
+    await expect.poll(() => checkoutPage.state()).toMatchObject({ title: 'Checkout: Overview' });
   });
 
   test('[SD-038][P2][@regression] remains usable with long customer details', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
-    const longValue = 'A'.repeat(200);
+    const longValue = checkoutData.longInput.character.repeat(checkoutData.longInput.length);
     await checkoutPage.enterCustomer(longValue, longValue, longValue);
-    await checkoutPage.continueButton.click();
+    await checkoutPage.continue();
 
-    await expect(checkoutPage.pageTitle).toHaveText(/Checkout: (Your Information|Overview)/);
+    await expect.poll(async () => (await checkoutPage.state()).title).toMatch(/Checkout: (Your Information|Overview)/);
   });
 
   test('[SD-039][P1][@core] cancels checkout information and retains cart items', async ({ inventoryPage, cartPage, checkoutPage, page }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
-    await checkoutPage.cancelButton.click();
+    await checkoutPage.cancel();
 
     await expect(page).toHaveURL(/\/cart\.html$/);
-    await expect(cartPage.items).toHaveCount(1);
+    await expect.poll(() => cartPage.state()).toMatchObject({ itemNames: [products.backpack.name] });
   });
 
   test('[SD-040][P0][@core] carries the same line items into order overview', async ({ inventoryPage, cartPage, checkoutPage }) => {
-    const selected = [products.backpack, products.bikeLight];
+    const selected = flows.checkoutLineItems;
     await openCheckout(inventoryPage, cartPage, selected);
-    await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-    await checkoutPage.continueButton.click();
+    await enterValidCustomer(checkoutPage);
+    await checkoutPage.continue();
 
-    expect(await checkoutPage.displayedItemNames()).toEqual(await cartPage.itemNames());
-    expect(await checkoutPage.displayedItemPrices()).toEqual(await cartPage.itemPrices());
+    const overview = await checkoutPage.state();
+    expect(overview.itemNames).toEqual(await cartPage.itemNames());
+    expect(overview.itemPrices).toEqual(await cartPage.itemPrices());
   });
 
   test('[SD-041][P1][@core] calculates item subtotal from line prices', async ({ inventoryPage, cartPage, checkoutPage }) => {
-    const selected = [products.backpack, products.bikeLight, products.onesie];
+    const selected = flows.checkoutSubtotalItems;
     await openCheckout(inventoryPage, cartPage, selected);
-    await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-    await checkoutPage.continueButton.click();
+    await enterValidCustomer(checkoutPage);
+    await checkoutPage.continue();
 
     const expectedSubtotal = selected.reduce((sum, item) => sum + item.price, 0);
-    await expect(checkoutPage.subtotalLabel).toContainText(expectedSubtotal.toFixed(2));
+    await expect.poll(async () => (await checkoutPage.state()).subtotal).toBe(expectedSubtotal);
   });
 
   test('[SD-042][P1][@core] adds the displayed tax to the item subtotal', async ({ inventoryPage, cartPage, checkoutPage }) => {
-    await openCheckout(inventoryPage, cartPage, [products.backpack, products.bikeLight]);
-    await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-    await checkoutPage.continueButton.click();
+    await openCheckout(inventoryPage, cartPage, flows.checkoutTaxItems);
+    await enterValidCustomer(checkoutPage);
+    await checkoutPage.continue();
 
-    const subtotal = await checkoutPage.amount(checkoutPage.subtotalLabel);
-    const tax = await checkoutPage.amount(checkoutPage.taxLabel);
-    const total = await checkoutPage.amount(checkoutPage.totalLabel);
-    expect(total).toBeCloseTo(subtotal + tax, 2);
+    await expect.poll(() => checkoutPage.state()).toMatchObject({ title: 'Checkout: Overview' });
+    const { subtotal, tax, total } = await checkoutPage.state();
+    expect(subtotal).not.toBeNull();
+    expect(tax).not.toBeNull();
+    expect(total).not.toBeNull();
+    expect(total!).toBeCloseTo(subtotal! + tax!, 2);
   });
 
   test('[SD-043][P1][@core] cancels from overview without completing the order', async ({ inventoryPage, cartPage, checkoutPage, page }) => {
     await openCheckout(inventoryPage, cartPage, [products.backpack]);
-    await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-    await checkoutPage.continueButton.click();
-    await checkoutPage.cancelButton.click();
+    await enterValidCustomer(checkoutPage);
+    await checkoutPage.continue();
+    await checkoutPage.cancel();
 
     await expect(page).toHaveURL(/\/inventory\.html$/);
-    await expect(inventoryPage.cartBadge).toHaveText('1');
+    await expect.poll(() => inventoryPage.state()).toMatchObject({ cartBadge: '1' });
   });
 
   test('[SD-044][P0][@smoke] finishes purchase and shows confirmation', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await completePurchase(inventoryPage, cartPage, checkoutPage, [products.backpack]);
 
-    await expect(checkoutPage.completionHeader).toContainText(/Thank you for your order/);
+    await expect.poll(async () => (await checkoutPage.state()).completionMessage).toContain('Thank you for your order');
   });
 
   test('[SD-045][P1][@core] returns home after completing a purchase', async ({ inventoryPage, cartPage, checkoutPage, page }) => {
     await completePurchase(inventoryPage, cartPage, checkoutPage, [products.backpack]);
-    await checkoutPage.backHomeButton.click();
+    await checkoutPage.backHome();
 
     await expect(page).toHaveURL(/\/inventory\.html$/);
-    await expect(inventoryPage.pageTitle).toHaveText('Products');
+    await expect.poll(() => inventoryPage.state()).toMatchObject({ title: 'Products' });
   });
 
   test('[SD-058][P0][@smoke] completes checkout with multiple products', async ({ inventoryPage, cartPage, checkoutPage }) => {
-    await completePurchase(inventoryPage, cartPage, checkoutPage, [products.backpack, products.bikeLight, products.onesie]);
+    await completePurchase(inventoryPage, cartPage, checkoutPage, flows.checkoutMultiOrderItems);
 
-    await expect(checkoutPage.completionHeader).toContainText(/Thank you for your order/);
+    await expect.poll(async () => (await checkoutPage.state()).completionMessage).toContain('Thank you for your order');
   });
 });
 
 async function openCheckout(inventoryPage: InventoryPage, cartPage: CartPage, selected: readonly { name: string }[]): Promise<void> {
   for (const item of selected) await inventoryPage.addToCart(item.name);
-  await inventoryPage.shoppingCartLink.click();
-  await cartPage.checkoutButton.click();
+  await inventoryPage.openCart();
+  await cartPage.startCheckout();
 }
 
 async function completePurchase(
@@ -145,7 +146,12 @@ async function completePurchase(
   selected: readonly { name: string }[],
 ): Promise<void> {
   await openCheckout(inventoryPage, cartPage, selected);
-  await checkoutPage.enterCustomer('Ada', 'Lovelace', '94043');
-  await checkoutPage.continueButton.click();
-  await checkoutPage.finishButton.click();
+  await enterValidCustomer(checkoutPage);
+  await checkoutPage.continue();
+  await checkoutPage.finish();
+}
+
+async function enterValidCustomer(checkoutPage: CheckoutPage): Promise<void> {
+  const customer = createCustomerData();
+  await checkoutPage.enterCustomer(customer.firstName, customer.lastName, customer.postalCode);
 }

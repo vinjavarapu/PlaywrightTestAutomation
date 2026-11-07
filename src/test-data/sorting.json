@@ -1,0 +1,6 @@
+[
+  { "id": "SD-019", "label": "sorts names A to Z", "option": "az", "field": "name", "direction": "ascending" },
+  { "id": "SD-020", "label": "sorts names Z to A", "option": "za", "field": "name", "direction": "descending" },
+  { "id": "SD-021", "label": "sorts prices low to high", "option": "lohi", "field": "price", "direction": "ascending" },
+  { "id": "SD-022", "label": "sorts prices high to low", "option": "hilo", "field": "price", "direction": "descending" }
+]

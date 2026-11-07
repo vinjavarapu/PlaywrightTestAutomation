@@ -1,53 +1,133 @@
 import { type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
+export type InventorySort = 'az' | 'za' | 'lohi' | 'hilo';
+
+export interface InventoryState {
+  readonly title: string;
+  readonly itemCount: number;
+  readonly productNames: string[];
+  readonly productPrices: number[];
+  readonly cartBadge: string | null;
+  readonly firstActionLabel: string;
+}
+
+export interface ProductDetailsState {
+  readonly name: string;
+  readonly description: string;
+  readonly price: string;
+  readonly imageVisible: boolean;
+}
+
 export class InventoryPage extends BasePage {
-  readonly pageTitle: Locator;
-  readonly items: Locator;
-  readonly productNames: Locator;
-  readonly productPrices: Locator;
-  readonly sortSelect: Locator;
-  readonly shoppingCartLink: Locator;
-  readonly cartBadge: Locator;
+  private readonly title: Locator;
+  private readonly items: Locator;
+  private readonly productNames: Locator;
+  private readonly productPrices: Locator;
+  private readonly sortSelect: Locator;
+  private readonly shoppingCartLink: Locator;
+  private readonly cartBadge: Locator;
+  private readonly detailName: Locator;
+  private readonly detailDescription: Locator;
+  private readonly detailPrice: Locator;
+  private readonly detailImage: Locator;
 
   constructor(page: Page) {
     super(page);
-
-    this.pageTitle = page.getByTestId('title');
-    this.items = page.getByTestId('inventory-item');
-    this.productNames = page.getByTestId('inventory-item-name');
-    this.productPrices = page.getByTestId('inventory-item-price');
-    this.sortSelect = page.getByTestId('product-sort-container');
-    this.shoppingCartLink = page.getByTestId('shopping-cart-link');
-    this.cartBadge = page.getByTestId('shopping-cart-badge');
+    this.title = this.byTestId('title');
+    this.items = this.byTestId('inventory-item');
+    this.productNames = this.byTestId('inventory-item-name');
+    this.productPrices = this.byTestId('inventory-item-price');
+    this.sortSelect = this.byTestId('product-sort-container');
+    this.shoppingCartLink = this.byTestId('shopping-cart-link');
+    this.cartBadge = this.byTestId('shopping-cart-badge');
+    this.detailName = this.byTestId('inventory-item-name');
+    this.detailDescription = this.byTestId('inventory-item-desc');
+    this.detailPrice = this.byTestId('inventory-item-price');
+    this.detailImage = page.getByRole('img');
   }
 
-  itemByName(name: string): Locator {
-    return this.items.filter({ has: this.page.getByRole('link', { name, exact: true }) });
+  async state(): Promise<InventoryState> {
+    const badgeVisible = await this.isVisible(this.cartBadge);
+    return {
+      title: await this.text(this.title),
+      itemCount: await this.count(this.items),
+      productNames: await this.texts(this.productNames),
+      productPrices: (await this.texts(this.productPrices)).map(parseCurrency),
+      cartBadge: badgeVisible ? await this.text(this.cartBadge) : null,
+      firstActionLabel: await this.text(this.items.first().getByRole('button')),
+    };
+  }
+
+  async productButtonLabel(name: string): Promise<string> {
+    return this.text(this.cardFor(name).getByRole('button'));
   }
 
   async addToCart(name: string): Promise<void> {
-    await this.itemByName(name).getByRole('button').click();
+    await this.click(this.cardFor(name).getByRole('button'));
   }
 
   async removeFromCart(name: string): Promise<void> {
-    await this.itemByName(name).getByRole('button', { name: 'Remove' }).click();
+    await this.click(this.cardFor(name).getByRole('button', { name: 'Remove' }));
   }
 
-  async productNameList(): Promise<string[]> {
-    return (await this.productNames.allTextContents()).map((name) => name.trim());
+  async addToCartWithKeyboard(name: string): Promise<void> {
+    const button = this.cardFor(name).getByRole('button');
+    await button.focus();
+    await this.page.keyboard.press('Space');
   }
 
-  async numericPriceList(): Promise<number[]> {
-    const labels = await this.productPrices.allTextContents();
-    return labels.map((label) => Number(label.replace('$', '').trim()));
+  async sortBy(option: InventorySort): Promise<void> {
+    await this.select(this.sortSelect, option);
   }
 
   async openProduct(name: string): Promise<void> {
-    await this.page.getByRole('link', { name, exact: true }).click();
+    await this.click(this.page.getByRole('link', { name, exact: true }));
   }
 
-  addButtonFor(name: string): Locator {
-    return this.itemByName(name).getByRole('button');
+  async productDetails(): Promise<ProductDetailsState> {
+    return {
+      name: await this.text(this.detailName),
+      description: await this.text(this.detailDescription),
+      price: await this.text(this.detailPrice),
+      imageVisible: await this.isVisible(this.detailImage),
+    };
   }
+
+  async backToProducts(): Promise<void> {
+    await this.click(this.byTestId('back-to-products'));
+  }
+
+  async openCart(): Promise<void> {
+    await this.click(this.shoppingCartLink);
+  }
+
+  async layoutFitsViewport(): Promise<boolean> {
+    return this.items.evaluateAll((elements) => {
+      const width = document.documentElement.clientWidth;
+      return elements.every((element) => {
+        const bounds = element.getBoundingClientRect();
+        return bounds.left >= 0 && bounds.right <= width + 1;
+      });
+    });
+  }
+
+  async allProductImagesLoaded(): Promise<boolean> {
+    return this.items.locator('img').evaluateAll((images) =>
+      images.length === 6 && images.every((image) => {
+        const element = image as HTMLImageElement;
+        return element.complete && element.naturalWidth > 0;
+      }),
+    );
+  }
+
+  private cardFor(name: string): Locator {
+    return this.items.filter({ has: this.page.getByRole('link', { name, exact: true }) });
+  }
+}
+
+function parseCurrency(label: string): number {
+  const amount = Number(label.replace(/[^\d.]/g, ''));
+  if (!Number.isFinite(amount)) throw new Error(`Invalid product price: ${label}`);
+  return amount;
 }

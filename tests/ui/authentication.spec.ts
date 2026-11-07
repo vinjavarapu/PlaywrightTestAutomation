@@ -1,14 +1,17 @@
 import { test, expect } from '../../src/fixtures/test';
 import { users } from '../../src/test-data/users';
+import { invalidLoginScenarios } from '../../src/test-data/authentication';
 
 test.describe('Authentication and session', () => {
   test('[SD-001][P0][@smoke] opens the login page with required controls', async ({ page, loginPage }) => {
     await loginPage.open();
 
     await expect(page).toHaveURL(/\/$/);
-    await expect(loginPage.usernameInput).toBeVisible();
-    await expect(loginPage.passwordInput).toBeVisible();
-    await expect(loginPage.loginButton).toBeVisible();
+    await expect.poll(() => loginPage.state()).toMatchObject({
+      usernameVisible: true,
+      passwordVisible: true,
+      loginButtonVisible: true,
+    });
   });
 
   test('[SD-002][P0][@smoke] signs in as the standard user', async ({ loginPage, inventoryPage, standardUser, page }) => {
@@ -16,22 +19,14 @@ test.describe('Authentication and session', () => {
     await loginPage.login(standardUser.username, standardUser.password);
 
     await expect(page).toHaveURL(/\/inventory\.html$/);
-    await expect(inventoryPage.pageTitle).toHaveText('Products');
+    await expect.poll(() => inventoryPage.state()).toMatchObject({ title: 'Products' });
   });
 
-  const rejectedCredentials = [
-    { id: 'SD-003', name: 'rejects an unknown username', username: 'unknown_user', password: 'secret_sauce', message: /do not match any user/ },
-    { id: 'SD-004', name: 'rejects an incorrect password', username: 'standard_user', password: 'wrong_password', message: /do not match any user/ },
-    { id: 'SD-005', name: 'requires a username when both fields are blank', username: '', password: '', message: /Username is required/ },
-    { id: 'SD-006', name: 'requires a password', username: 'standard_user', password: '', message: /Password is required/ },
-    { id: 'SD-007', name: 'requires a username when only a password is supplied', username: '', password: 'secret_sauce', message: /Username is required/ },
-  ];
-
-  for (const scenario of rejectedCredentials) {
+  for (const scenario of invalidLoginScenarios) {
     test(`[${scenario.id}][P1][@core] ${scenario.name}`, async ({ loginPage, page }) => {
       await loginPage.open();
       await loginPage.login(scenario.username, scenario.password);
-      await expect(loginPage.errorMessage).toContainText(scenario.message);
+      await expect.poll(() => loginPage.state()).toMatchObject({ errorMessage: expect.stringContaining(scenario.message) });
       await expect(page).toHaveURL(/\/$/);
     });
   }
@@ -40,7 +35,7 @@ test.describe('Authentication and session', () => {
     await loginPage.open();
     await loginPage.login(users.lockedOut.username, users.lockedOut.password);
 
-    await expect(loginPage.errorMessage).toContainText(/locked out/);
+    await expect.poll(() => loginPage.state()).toMatchObject({ errorMessage: expect.stringContaining('locked out') });
     await expect(page).toHaveURL(/\/$/);
   });
 
@@ -49,25 +44,22 @@ test.describe('Authentication and session', () => {
     await loginPage.login(users.problem.username, users.problem.password);
 
     await expect(page).toHaveURL(/\/inventory\.html$/);
-    await expect(inventoryPage.items).toHaveCount(6);
+    await expect.poll(() => inventoryPage.state()).toMatchObject({ itemCount: 6 });
   });
 
   test('[SD-010][P2][@regression] waits through the performance user delay', async ({ loginPage, inventoryPage, page }) => {
     test.setTimeout(90_000);
     await loginPage.open();
-    await loginPage.usernameInput.fill(users.performanceGlitch.username);
-    await loginPage.passwordInput.fill(users.performanceGlitch.password);
-    await loginPage.loginButton.click({ timeout: 60_000 });
+    await loginPage.login(users.performanceGlitch.username, users.performanceGlitch.password, { timeout: 60_000 });
 
     await page.waitForURL(/\/inventory\.html$/, { timeout: 60_000 });
-    await expect(inventoryPage.pageTitle).toHaveText('Products', { timeout: 60_000 });
+    await expect.poll(() => inventoryPage.state(), { timeout: 60_000 }).toMatchObject({ title: 'Products' });
   });
 
   test('[SD-011][P2][@regression] masks password input characters', async ({ loginPage }) => {
     await loginPage.open();
-    await loginPage.passwordInput.fill('secret_sauce');
-
-    await expect(loginPage.passwordInput).toHaveAttribute('type', 'password');
+    await loginPage.enterPasswordForMasking(users.standard.password);
+    expect(await loginPage.passwordInputType()).toBe('password');
   });
 
   test('[SD-012][P1][@core] logs out and returns to the login page', async ({ loginPage, sideMenu, standardUser, page }) => {
@@ -77,6 +69,6 @@ test.describe('Authentication and session', () => {
     await sideMenu.logout();
 
     await expect(page).toHaveURL(/\/$/);
-    await expect(loginPage.loginButton).toBeVisible();
+    await expect.poll(() => loginPage.state()).toMatchObject({ loginButtonVisible: true });
   });
 });
