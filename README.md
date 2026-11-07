@@ -38,6 +38,10 @@ npm.cmd run test:debug
 npm.cmd run report
 ```
 
+## GitHub Actions
+
+The Playwright suite runs automatically on pushes and pull requests targeting `main`. You can also start it manually from the Actions tab. Test reports and artifacts are attached to each workflow run.
+
 ## Project layout
 
 ```text
@@ -46,4 +50,3 @@ tests/     API and UI specs
 ```
 
 Playwright reports and test artifacts are generated locally and ignored by Git. Set `BASE_URL` in your shell when you need to target a different service.
-
