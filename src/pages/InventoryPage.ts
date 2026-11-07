@@ -55,24 +55,24 @@ export class InventoryPage extends BasePage {
       productNames: await this.texts(this.productNames),
       productPrices: (await this.texts(this.productPrices)).map(parseCurrency),
       cartBadge: badgeVisible ? await this.text(this.cartBadge) : null,
-      firstActionLabel: await this.text(this.items.first().getByRole('button')),
+      firstActionLabel: await this.text(this.firstActionButton()),
     };
   }
 
   async productButtonLabel(name: string): Promise<string> {
-    return this.text(this.cardFor(name).getByRole('button'));
+    return this.text(this.actionButtonFor(name));
   }
 
   async addToCart(name: string): Promise<void> {
-    await this.click(this.cardFor(name).getByRole('button'));
+    await this.click(this.actionButtonFor(name));
   }
 
   async removeFromCart(name: string): Promise<void> {
-    await this.click(this.cardFor(name).getByRole('button', { name: 'Remove' }));
+    await this.click(this.actionButtonFor(name));
   }
 
   async addToCartWithKeyboard(name: string): Promise<void> {
-    const button = this.cardFor(name).getByRole('button');
+    const button = this.actionButtonFor(name);
     await button.focus();
     await this.page.keyboard.press('Space');
   }
@@ -82,7 +82,7 @@ export class InventoryPage extends BasePage {
   }
 
   async openProduct(name: string): Promise<void> {
-    await this.click(this.page.getByRole('link', { name, exact: true }));
+    await this.click(this.cardFor(name).getByRole('button', { name: /View details/i }));
   }
 
   async productDetails(): Promise<ProductDetailsState> {
@@ -122,7 +122,15 @@ export class InventoryPage extends BasePage {
   }
 
   private cardFor(name: string): Locator {
-    return this.items.filter({ has: this.page.getByRole('link', { name, exact: true }) });
+    return this.items.filter({ hasText: name }).first();
+  }
+
+  private firstActionButton(): Locator {
+    return this.items.first().locator('button').filter({ hasText: /Add to cart|Remove/i }).first();
+  }
+
+  private actionButtonFor(name: string): Locator {
+    return this.cardFor(name).locator('button').filter({ hasText: /Add to cart|Remove/i }).first();
   }
 }
 

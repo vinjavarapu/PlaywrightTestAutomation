@@ -1,0 +1,60 @@
+Listing tests:
+  [chromium] › ui\authentication.spec.ts:6:3 › Authentication and session › [SD-001][P0][@smoke] opens the login page with required controls
+  [chromium] › ui\authentication.spec.ts:17:3 › Authentication and session › [SD-002][P0][@smoke] signs in as the standard user
+  [chromium] › ui\authentication.spec.ts:26:5 › Authentication and session › [SD-003][P1][@core] rejects an unknown username
+  [chromium] › ui\authentication.spec.ts:26:5 › Authentication and session › [SD-004][P1][@core] rejects an incorrect password
+  [chromium] › ui\authentication.spec.ts:26:5 › Authentication and session › [SD-005][P1][@core] requires a username when both fields are blank
+  [chromium] › ui\authentication.spec.ts:26:5 › Authentication and session › [SD-006][P1][@core] requires a password
+  [chromium] › ui\authentication.spec.ts:26:5 › Authentication and session › [SD-007][P1][@core] requires a username when only a password is supplied
+  [chromium] › ui\authentication.spec.ts:34:3 › Authentication and session › [SD-008][P1][@core] blocks the locked-out user
+  [chromium] › ui\authentication.spec.ts:42:3 › Authentication and session › [SD-009][P2][@regression] observes the problem user inventory flow
+  [chromium] › ui\authentication.spec.ts:50:3 › Authentication and session › [SD-010][P2][@regression] waits through the performance user delay
+  [chromium] › ui\authentication.spec.ts:59:3 › Authentication and session › [SD-011][P2][@regression] masks password input characters
+  [chromium] › ui\authentication.spec.ts:65:3 › Authentication and session › [SD-012][P1][@core] logs out and returns to the login page
+  [chromium] › ui\cart.spec.ts:11:3 › Shopping cart › [SD-025][P1][@core] opens an empty cart without line items
+  [chromium] › ui\cart.spec.ts:17:3 › Shopping cart › [SD-026][P0][@core] shows the selected product and quantity in cart
+  [chromium] › ui\cart.spec.ts:28:3 › Shopping cart › [SD-027][P0][@core] removes an item from the cart and clears its badge
+  [chromium] › ui\cart.spec.ts:36:3 › Shopping cart › [SD-028][P1][@core] continues shopping and retains cart contents
+  [chromium] › ui\cart.spec.ts:46:3 › Shopping cart › [SD-029][P1][@core] lists each selected product exactly once
+  [chromium] › ui\cart.spec.ts:54:3 › Shopping cart › [SD-030][P1][@core] keeps cart state while navigating through product details
+  [chromium] › ui\checkout.spec.ts:16:3 › Checkout and order completion › [SD-031][P0][@smoke] starts checkout from a cart with a product
+  [chromium] › ui\checkout.spec.ts:22:3 › Checkout and order completion › [SD-032][P0][@smoke] continues with valid customer details
+  [chromium] › ui\checkout.spec.ts:31:5 › Checkout and order completion › [SD-033][P1][@core] requires first name when all fields are blank
+  [chromium] › ui\checkout.spec.ts:31:5 › Checkout and order completion › [SD-034][P1][@core] requires first name
+  [chromium] › ui\checkout.spec.ts:31:5 › Checkout and order completion › [SD-035][P1][@core] requires last name
+  [chromium] › ui\checkout.spec.ts:31:5 › Checkout and order completion › [SD-036][P1][@core] requires postal code
+  [chromium] › ui\checkout.spec.ts:42:3 › Checkout and order completion › [SD-037][P2][@regression] handles punctuation in customer details
+  [chromium] › ui\checkout.spec.ts:54:3 › Checkout and order completion › [SD-038][P2][@regression] remains usable with long customer details
+  [chromium] › ui\checkout.spec.ts:63:3 › Checkout and order completion › [SD-039][P1][@core] cancels checkout information and retains cart items
+  [chromium] › ui\checkout.spec.ts:71:3 › Checkout and order completion › [SD-040][P0][@core] carries the same line items into order overview
+  [chromium] › ui\checkout.spec.ts:82:3 › Checkout and order completion › [SD-041][P1][@core] calculates item subtotal from line prices
+  [chromium] › ui\checkout.spec.ts:92:3 › Checkout and order completion › [SD-042][P1][@core] adds the displayed tax to the item subtotal
+  [chromium] › ui\checkout.spec.ts:105:3 › Checkout and order completion › [SD-043][P1][@core] cancels from overview without completing the order
+  [chromium] › ui\checkout.spec.ts:115:3 › Checkout and order completion › [SD-044][P0][@smoke] finishes purchase and shows confirmation
+  [chromium] › ui\checkout.spec.ts:121:3 › Checkout and order completion › [SD-045][P1][@core] returns home after completing a purchase
+  [chromium] › ui\checkout.spec.ts:129:3 › Checkout and order completion › [SD-058][P0][@smoke] completes checkout with multiple products
+  [chromium] › ui\extended-quality.spec.ts:5:3 › Extended UI quality › [SD-053][P2][@regression] keeps inventory controls usable on narrow viewports
+  [chromium] › ui\extended-quality.spec.ts:14:3 › Extended UI quality › [SD-054][P2][@regression] uses keyboard controls for login and shopping
+  [chromium] › ui\extended-quality.spec.ts:23:3 › Extended UI quality › [SD-055][P2][@regression] shows a visible keyboard focus indicator
+  [chromium] › ui\extended-quality.spec.ts:29:3 › Extended UI quality › [SD-056][P2][@regression] loads all standard inventory product images
+  [chromium] › ui\extended-quality.spec.ts:36:3 › Extended UI quality › [SD-057][P2][@regression] keeps add and remove actions synchronized over repeated cycles
+  [chromium] › ui\inventory.spec.ts:11:3 › Inventory, product details and sorting › [SD-013][P0][@smoke] displays the standard product catalogue
+  [chromium] › ui\inventory.spec.ts:19:3 › Inventory, product details and sorting › [SD-014][P1][@core] opens matching product details
+  [chromium] › ui\inventory.spec.ts:32:3 › Inventory, product details and sorting › [SD-015][P1][@core] returns from product details to inventory
+  [chromium] › ui\inventory.spec.ts:40:3 › Inventory, product details and sorting › [SD-016][P0][@smoke] adds one product and synchronizes its button and badge
+  [chromium] › ui\inventory.spec.ts:47:3 › Inventory, product details and sorting › [SD-017][P0][@core] adds multiple products with an accurate cart count
+  [chromium] › ui\inventory.spec.ts:57:3 › Inventory, product details and sorting › [SD-018][P1][@core] removes a product from the inventory page
+  [chromium] › ui\inventory.spec.ts:66:5 › Inventory, product details and sorting › [SD-019][P1][@core] sorts names A to Z
+  [chromium] › ui\inventory.spec.ts:66:5 › Inventory, product details and sorting › [SD-020][P1][@core] sorts names Z to A
+  [chromium] › ui\inventory.spec.ts:77:5 › Inventory, product details and sorting › [SD-021][P1][@core] sorts prices low to high
+  [chromium] › ui\inventory.spec.ts:77:5 › Inventory, product details and sorting › [SD-022][P1][@core] sorts prices high to low
+  [chromium] › ui\inventory.spec.ts:85:3 › Inventory, product details and sorting › [SD-023][P2][@regression] preserves the cart when sorting inventory
+  [chromium] › ui\inventory.spec.ts:93:3 › Inventory, product details and sorting › [SD-024][P0][@smoke] opens the cart with the selected product
+  [chromium] › ui\navigation-session.spec.ts:10:3 › Navigation and session behavior › [SD-046][P1][@core] opens and closes the side menu
+  [chromium] › ui\navigation-session.spec.ts:17:3 › Navigation and session behavior › [SD-047][P2][@regression] opens inventory from the All Items menu link
+  [chromium] › ui\navigation-session.spec.ts:25:3 › Navigation and session behavior › [SD-048][P2][@regression] follows the About link to Sauce Labs
+  [chromium] › ui\navigation-session.spec.ts:39:3 › Navigation and session behavior › [SD-049][P1][@core] resets app state and clears the cart
+  [chromium] › ui\navigation-session.spec.ts:48:3 › Navigation and session behavior › [SD-050][P2][@regression] keeps the authenticated inventory usable after refresh
+  [chromium] › ui\navigation-session.spec.ts:55:3 › Navigation and session behavior › [SD-051][P1][@core] redirects a logged-out direct inventory visit to login
+  [chromium] › ui\navigation-session.spec.ts:62:3 › Navigation and session behavior › [SD-052][P2][@regression] keeps browser back and forward navigation consistent
+Total: 58 tests in 6 files

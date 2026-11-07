@@ -58,7 +58,7 @@ export class CartPage extends BasePage {
   }
 
   private itemFor(name: string): Locator {
-    return this.items.filter({ has: this.page.getByTestId('inventory-item-name').getByText(name, { exact: true }) });
+    return this.items.filter({ hasText: name }).first();
   }
 }
 
