@@ -82,7 +82,8 @@ export class InventoryPage extends BasePage {
   }
 
   async openProduct(name: string): Promise<void> {
-    await this.click(this.cardFor(name).getByRole('button', { name: /View details/i }));
+    const detailLink = this.page.locator('[data-test$="-title-link"]').filter({ hasText: name }).first();
+    await this.click(detailLink);
   }
 
   async productDetails(): Promise<ProductDetailsState> {
@@ -122,7 +123,7 @@ export class InventoryPage extends BasePage {
   }
 
   private cardFor(name: string): Locator {
-    return this.items.filter({ hasText: name }).first();
+    return this.items.filter({ has: this.page.locator('[data-test$="-title-link"]').filter({ hasText: name }).first() }).first();
   }
 
   private firstActionButton(): Locator {

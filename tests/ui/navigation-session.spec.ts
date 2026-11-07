@@ -53,6 +53,8 @@ test.describe('Navigation and session behavior', () => {
   });
 
   test('[SD-051][P1][@core] redirects a logged-out direct inventory visit to login', async ({ page, loginPage }) => {
+    await page.context().clearCookies();
+    await page.evaluate(() => window.localStorage.clear());
     await page.goto('/inventory.html');
 
     await expect(page).toHaveURL(/\/$/);

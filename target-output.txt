@@ -1,0 +1,220 @@
+﻿
+Running 19 tests using 8 workers
+
+[1/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:11:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-013][P0][@smoke] displays the standard product catalogue
+[2/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:32:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-015][P1][@core] returns from product details to inventory
+[3/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:19:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-014][P1][@core] opens matching product details
+[4/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:40:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-016][P0][@smoke] adds one product and synchronizes its button and badge
+[5/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-019][P1][@core] sorts names A to Z
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:11:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-013][P0][@smoke] displays the standard product catalogue
+{"timestamp":"2026-11-07T15:41:38.190Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-7ae706253bec96b69ef3","title":"[SD-013][P0][@smoke] displays the standard product catalogue","project":"chromium","environment":"demo","workerIndex":0,"retry":0}
+
+[6/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:47:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-017][P0][@core] adds multiple products with an accurate cart count
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:32:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-015][P1][@core] returns from product details to inventory
+{"timestamp":"2026-11-07T15:41:38.199Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-e2b4a4964f29ec98174a","title":"[SD-015][P1][@core] returns from product details to inventory","project":"chromium","environment":"demo","workerIndex":2,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:19:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-014][P1][@core] opens matching product details
+{"timestamp":"2026-11-07T15:41:38.201Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-5841dd83b58a8a3888af","title":"[SD-014][P1][@core] opens matching product details","project":"chromium","environment":"demo","workerIndex":1,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:40:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-016][P0][@smoke] adds one product and synchronizes its button and badge
+{"timestamp":"2026-11-07T15:41:38.228Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-97ae3a5357687483fe10","title":"[SD-016][P0][@smoke] adds one product and synchronizes its button and badge","project":"chromium","environment":"demo","workerIndex":3,"retry":0}
+
+[7/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:57:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-018][P1][@core] removes a product from the inventory page
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-019][P1][@core] sorts names A to Z
+{"timestamp":"2026-11-07T15:41:38.232Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-6ab7f16446bff8ee8d61","title":"[SD-019][P1][@core] sorts names A to Z","project":"chromium","environment":"demo","workerIndex":6,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:47:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-017][P0][@core] adds multiple products with an accurate cart count
+{"timestamp":"2026-11-07T15:41:38.239Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-980a32e55a8474240cb5","title":"[SD-017][P0][@core] adds multiple products with an accurate cart count","project":"chromium","environment":"demo","workerIndex":4,"retry":0}
+
+[8/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-020][P1][@core] sorts names Z to A
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:57:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-018][P1][@core] removes a product from the inventory page
+{"timestamp":"2026-11-07T15:41:38.274Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-d1c9fa2e3d0aa801d4bb","title":"[SD-018][P1][@core] removes a product from the inventory page","project":"chromium","environment":"demo","workerIndex":5,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-020][P1][@core] sorts names Z to A
+{"timestamp":"2026-11-07T15:41:38.289Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-3f0793ea76c2125490bf","title":"[SD-020][P1][@core] sorts names Z to A","project":"chromium","environment":"demo","workerIndex":7,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:40:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-016][P0][@smoke] adds one product and synchronizes its button and badge
+{"timestamp":"2026-11-07T15:41:41.194Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-97ae3a5357687483fe10","title":"[SD-016][P0][@smoke] adds one product and synchronizes its button and badge","project":"chromium","environment":"demo","workerIndex":3,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2966}
+
+[9/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-021][P1][@core] sorts prices low to high
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-021][P1][@core] sorts prices low to high
+{"timestamp":"2026-11-07T15:41:41.226Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-355fc1fb2dcb619a5bea","title":"[SD-021][P1][@core] sorts prices low to high","project":"chromium","environment":"demo","workerIndex":3,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:32:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-015][P1][@core] returns from product details to inventory
+{"timestamp":"2026-11-07T15:41:41.265Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-e2b4a4964f29ec98174a","title":"[SD-015][P1][@core] returns from product details to inventory","project":"chromium","environment":"demo","workerIndex":2,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3066}
+
+[10/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-022][P1][@core] sorts prices high to low
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-022][P1][@core] sorts prices high to low
+{"timestamp":"2026-11-07T15:41:41.295Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-3c191cc7d341d84d4b1b","title":"[SD-022][P1][@core] sorts prices high to low","project":"chromium","environment":"demo","workerIndex":2,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-019][P1][@core] sorts names A to Z
+{"timestamp":"2026-11-07T15:41:41.483Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-6ab7f16446bff8ee8d61","title":"[SD-019][P1][@core] sorts names A to Z","project":"chromium","environment":"demo","workerIndex":6,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3251}
+
+[11/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:85:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-023][P2][@regression] preserves the cart when sorting inventory
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:85:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-023][P2][@regression] preserves the cart when sorting inventory
+{"timestamp":"2026-11-07T15:41:41.517Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-514696019174e9152eb7","title":"[SD-023][P2][@regression] preserves the cart when sorting inventory","project":"chromium","environment":"demo","workerIndex":6,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:47:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-017][P0][@core] adds multiple products with an accurate cart count
+{"timestamp":"2026-11-07T15:41:41.548Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-980a32e55a8474240cb5","title":"[SD-017][P0][@core] adds multiple products with an accurate cart count","project":"chromium","environment":"demo","workerIndex":4,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3309}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:11:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-013][P0][@smoke] displays the standard product catalogue
+{"timestamp":"2026-11-07T15:41:41.551Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-7ae706253bec96b69ef3","title":"[SD-013][P0][@smoke] displays the standard product catalogue","project":"chromium","environment":"demo","workerIndex":0,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3361}
+
+[12/19] [chromium] ΓÇ║ tests\ui\inventory.spec.ts:93:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-024][P0][@smoke] opens the cart with the selected product
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:93:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-024][P0][@smoke] opens the cart with the selected product
+{"timestamp":"2026-11-07T15:41:41.585Z","level":"INFO","event":"test.started","testId":"733b82b1d8e14a1148af-d993db69e20f9ca5c3fe","title":"[SD-024][P0][@smoke] opens the cart with the selected product","project":"chromium","environment":"demo","workerIndex":4,"retry":0}
+
+[13/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:10:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-046][P1][@core] opens and closes the side menu
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:10:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-046][P1][@core] opens and closes the side menu
+{"timestamp":"2026-11-07T15:41:41.616Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-d2cb4c7d4907805fefb2","title":"[SD-046][P1][@core] opens and closes the side menu","project":"chromium","environment":"demo","workerIndex":0,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:66:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-020][P1][@core] sorts names Z to A
+{"timestamp":"2026-11-07T15:41:41.628Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-3f0793ea76c2125490bf","title":"[SD-020][P1][@core] sorts names Z to A","project":"chromium","environment":"demo","workerIndex":7,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3339}
+
+[14/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:17:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-047][P2][@regression] opens inventory from the All Items menu link
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:17:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-047][P2][@regression] opens inventory from the All Items menu link
+{"timestamp":"2026-11-07T15:41:41.664Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-cbe54c5174f41fe58a62","title":"[SD-047][P2][@regression] opens inventory from the All Items menu link","project":"chromium","environment":"demo","workerIndex":7,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:57:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-018][P1][@core] removes a product from the inventory page
+{"timestamp":"2026-11-07T15:41:41.691Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-d1c9fa2e3d0aa801d4bb","title":"[SD-018][P1][@core] removes a product from the inventory page","project":"chromium","environment":"demo","workerIndex":5,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3417}
+
+[15/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:25:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-048][P2][@regression] follows the About link to Sauce Labs
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:25:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-048][P2][@regression] follows the About link to Sauce Labs
+{"timestamp":"2026-11-07T15:41:41.730Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-ba427e3158b74d971f35","title":"[SD-048][P2][@regression] follows the About link to Sauce Labs","project":"chromium","environment":"demo","workerIndex":5,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-022][P1][@core] sorts prices high to low
+{"timestamp":"2026-11-07T15:41:43.481Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-3c191cc7d341d84d4b1b","title":"[SD-022][P1][@core] sorts prices high to low","project":"chromium","environment":"demo","workerIndex":2,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2186}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:77:5 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-021][P1][@core] sorts prices low to high
+{"timestamp":"2026-11-07T15:41:43.500Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-355fc1fb2dcb619a5bea","title":"[SD-021][P1][@core] sorts prices low to high","project":"chromium","environment":"demo","workerIndex":3,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2274}
+
+[16/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:39:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-049][P1][@core] resets app state and clears the cart
+[17/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:48:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-050][P2][@regression] keeps the authenticated inventory usable after refresh
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:39:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-049][P1][@core] resets app state and clears the cart
+{"timestamp":"2026-11-07T15:41:43.547Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-99020b1a33f3fbc36556","title":"[SD-049][P1][@core] resets app state and clears the cart","project":"chromium","environment":"demo","workerIndex":2,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:48:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-050][P2][@regression] keeps the authenticated inventory usable after refresh
+{"timestamp":"2026-11-07T15:41:43.584Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-2435a184fc9b795b7559","title":"[SD-050][P2][@regression] keeps the authenticated inventory usable after refresh","project":"chromium","environment":"demo","workerIndex":3,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:19:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-014][P1][@core] opens matching product details
+{"timestamp":"2026-11-07T15:41:43.754Z","level":"ERROR","event":"test.finished","testId":"733b82b1d8e14a1148af-5841dd83b58a8a3888af","title":"[SD-014][P1][@core] opens matching product details","project":"chromium","environment":"demo","workerIndex":1,"retry":0,"status":"failed","expectedStatus":"passed","durationMs":5552,"error":"Error: locator.isVisible: Error: strict mode violation: getByRole('img') resolved to 2 elements:\n    1) <img class=\"bm-icon\" alt=\"Open Menu\" data-test=\"open-menu\" srcset=\"data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0.666626%202.83333C0.666626%202.3731%201.00863%202%201.43051%202H14.5694C14.9913%202%2015.3333%202.3731%2015.3333%202.83333C15.3333%203.29357%2014.9913%203.66667%2014.5694%203.66667H1.43051C1.00863%203.66667%200.666626%203.29357%200.666626%202.ΓÇª/> aka getByTestId('open-menu')\n    2) <img alt=\"Sauce Labs Backpack\" class=\"inventory_details_img\" data-test=\"item-sauce-labs-backpack-img\" src=\"/assets/sauce-backpack-1200x1500-CjRW-Djj.jpg\"/> aka getByTestId('item-sauce-labs-backpack-img')\n\nCall log:\n\u001b[2m    - checking visibility of getByRole('img')\u001b[22m\n"}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:85:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-023][P2][@regression] preserves the cart when sorting inventory
+{"timestamp":"2026-11-07T15:41:44.020Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-514696019174e9152eb7","title":"[SD-023][P2][@regression] preserves the cart when sorting inventory","project":"chromium","environment":"demo","workerIndex":6,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2503}
+
+[18/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:55:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-051][P1][@core] redirects a logged-out direct inventory visit to login
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:55:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-051][P1][@core] redirects a logged-out direct inventory visit to login
+{"timestamp":"2026-11-07T15:41:44.080Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-c50fb8d940c3b878f103","title":"[SD-051][P1][@core] redirects a logged-out direct inventory visit to login","project":"chromium","environment":"demo","workerIndex":6,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\inventory.spec.ts:93:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-024][P0][@smoke] opens the cart with the selected product
+{"timestamp":"2026-11-07T15:41:44.151Z","level":"INFO","event":"test.finished","testId":"733b82b1d8e14a1148af-d993db69e20f9ca5c3fe","title":"[SD-024][P0][@smoke] opens the cart with the selected product","project":"chromium","environment":"demo","workerIndex":4,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2566}
+
+[19/19] [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:64:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-052][P2][@regression] keeps browser back and forward navigation consistent
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:64:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-052][P2][@regression] keeps browser back and forward navigation consistent
+{"timestamp":"2026-11-07T15:41:44.194Z","level":"INFO","event":"test.started","testId":"29ff4aad8d35e64f8454-25ce08f4364356375fe8","title":"[SD-052][P2][@regression] keeps browser back and forward navigation consistent","project":"chromium","environment":"demo","workerIndex":4,"retry":0}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:17:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-047][P2][@regression] opens inventory from the All Items menu link
+{"timestamp":"2026-11-07T15:41:44.557Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-cbe54c5174f41fe58a62","title":"[SD-047][P2][@regression] opens inventory from the All Items menu link","project":"chromium","environment":"demo","workerIndex":7,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2893}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:10:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-046][P1][@core] opens and closes the side menu
+{"timestamp":"2026-11-07T15:41:45.516Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-d2cb4c7d4907805fefb2","title":"[SD-046][P1][@core] opens and closes the side menu","project":"chromium","environment":"demo","workerIndex":0,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3900}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:25:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-048][P2][@regression] follows the About link to Sauce Labs
+{"timestamp":"2026-11-07T15:41:45.612Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-ba427e3158b74d971f35","title":"[SD-048][P2][@regression] follows the About link to Sauce Labs","project":"chromium","environment":"demo","workerIndex":5,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":3882}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:48:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-050][P2][@regression] keeps the authenticated inventory usable after refresh
+{"timestamp":"2026-11-07T15:41:46.130Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-2435a184fc9b795b7559","title":"[SD-050][P2][@regression] keeps the authenticated inventory usable after refresh","project":"chromium","environment":"demo","workerIndex":3,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2546}
+
+  1) [chromium] ΓÇ║ tests\ui\inventory.spec.ts:19:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-014][P1][@core] opens matching product details 
+
+    Error: locator.isVisible: Error: strict mode violation: getByRole('img') resolved to 2 elements:
+        1) <img class="bm-icon" alt="Open Menu" data-test="open-menu" srcset="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0.666626%202.83333C0.666626%202.3731%201.00863%202%201.43051%202H14.5694C14.9913%202%2015.3333%202.3731%2015.3333%202.83333C15.3333%203.29357%2014.9913%203.66667%2014.5694%203.66667H1.43051C1.00863%203.66667%200.666626%203.29357%200.666626%202.ΓÇª/> aka getByTestId('open-menu')
+        2) <img alt="Sauce Labs Backpack" class="inventory_details_img" data-test="item-sauce-labs-backpack-img" src="/assets/sauce-backpack-1200x1500-CjRW-Djj.jpg"/> aka getByTestId('item-sauce-labs-backpack-img')
+
+    Call log:
+        - checking visibility of getByRole('img')
+
+
+       at ..\src\pages\BasePage.ts:39
+
+      37 |
+      38 |   protected async isVisible(locator: Locator): Promise<boolean> {
+    > 39 |     return locator.isVisible();
+         |                    ^
+      40 |   }
+      41 |
+      42 |   protected async attribute(locator: Locator, name: string): Promise<string | null> {
+        at InventoryPage.isVisible (C:\fullstack-qa-lab\PlaywrightTestAutomation\src\pages\BasePage.ts:39:20)
+        at InventoryPage.productDetails (C:\fullstack-qa-lab\PlaywrightTestAutomation\src\pages\InventoryPage.ts:94:32)
+        at C:\fullstack-qa-lab\PlaywrightTestAutomation\tests\ui\inventory.spec.ts:24:5
+
+    attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-inventory-Inventory-pro-d801a-ns-matching-product-details-chromium\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #2: video (video/webm) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-inventory-Inventory-pro-d801a-ns-matching-product-details-chromium\video.webm
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\ui-inventory-Inventory-pro-d801a-ns-matching-product-details-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-inventory-Inventory-pro-d801a-ns-matching-product-details-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\ui-inventory-Inventory-pro-d801a-ns-matching-product-details-chromium\trace.zip
+
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:55:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-051][P1][@core] redirects a logged-out direct inventory visit to login
+{"timestamp":"2026-11-07T15:41:46.310Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-c50fb8d940c3b878f103","title":"[SD-051][P1][@core] redirects a logged-out direct inventory visit to login","project":"chromium","environment":"demo","workerIndex":6,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2230}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:64:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-052][P2][@regression] keeps browser back and forward navigation consistent
+{"timestamp":"2026-11-07T15:41:46.547Z","level":"INFO","event":"test.finished","testId":"29ff4aad8d35e64f8454-25ce08f4364356375fe8","title":"[SD-052][P2][@regression] keeps browser back and forward navigation consistent","project":"chromium","environment":"demo","workerIndex":4,"retry":0,"status":"passed","expectedStatus":"passed","durationMs":2353}
+
+[chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:39:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-049][P1][@core] resets app state and clears the cart
+{"timestamp":"2026-11-07T15:41:53.335Z","level":"ERROR","event":"test.finished","testId":"29ff4aad8d35e64f8454-99020b1a33f3fbc36556","title":"[SD-049][P1][@core] resets app state and clears the cart","project":"chromium","environment":"demo","workerIndex":2,"retry":0,"status":"failed","expectedStatus":"passed","durationMs":9788,"error":"Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"Add to cart\"\u001b[39m\nReceived: \u001b[31m\"Remove\"\u001b[39m\n\nCall Log:\n- Timeout 8000ms exceeded while waiting on the predicate"}
+
+  2) [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:39:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-049][P1][@core] resets app state and clears the cart 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Add to cart"
+    Received: "Remove"
+
+    Call Log:
+    - Timeout 8000ms exceeded while waiting on the predicate
+
+      43 |
+      44 |     await expect.poll(() => inventoryPage.state()).toMatchObject({ cartBadge: null });
+    > 45 |     await expect.poll(() => inventoryPage.productButtonLabel(products.backpack.name)).toBe('Add to cart');
+         |                                                                                       ^
+      46 |   });
+      47 |
+      48 |   test('[SD-050][P2][@regression] keeps the authenticated inventory usable after refresh', async ({ page, inventoryPage }) => {
+        at C:\fullstack-qa-lab\PlaywrightTestAutomation\tests\ui\navigation-session.spec.ts:45:87
+
+    attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-navigation-session-Navi-51fb6-p-state-and-clears-the-cart-chromium\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #2: video (video/webm) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-navigation-session-Navi-51fb6-p-state-and-clears-the-cart-chromium\video.webm
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\ui-navigation-session-Navi-51fb6-p-state-and-clears-the-cart-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\ui-navigation-session-Navi-51fb6-p-state-and-clears-the-cart-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\ui-navigation-session-Navi-51fb6-p-state-and-clears-the-cart-chromium\trace.zip
+
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+
+  2 failed
+    [chromium] ΓÇ║ tests\ui\inventory.spec.ts:19:3 ΓÇ║ Inventory, product details and sorting ΓÇ║ [SD-014][P1][@core] opens matching product details 
+    [chromium] ΓÇ║ tests\ui\navigation-session.spec.ts:39:3 ΓÇ║ Navigation and session behavior ΓÇ║ [SD-049][P1][@core] resets app state and clears the cart 
+  17 passed (16.2s)
