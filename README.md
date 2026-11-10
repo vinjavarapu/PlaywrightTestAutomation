@@ -12,6 +12,11 @@ From the repository root in PowerShell:
     npm.cmd ci
     npx.cmd playwright install chromium
 
+If Windows Application Control blocks Playwright's downloaded Chromium, use an installed Microsoft Edge browser:
+
+    $env:PLAYWRIGHT_CHANNEL = 'msedge'
+    npm.cmd test
+
 ## Run tests
 
     npm.cmd test

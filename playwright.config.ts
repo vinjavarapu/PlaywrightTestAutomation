@@ -21,6 +21,7 @@ export default defineConfig({
     testIdAttribute: 'data-test',
     locale: 'en-US',
     timezoneId: 'UTC',
+    channel: process.env.PLAYWRIGHT_CHANNEL === 'msedge' ? 'msedge' : undefined,
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
     trace: 'retain-on-failure',
